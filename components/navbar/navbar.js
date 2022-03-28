@@ -19,7 +19,7 @@ const Navbar = () => {
     <Wrap>
       <div className="first">
         <div className="logo">
-          <Image src={logo} alt="Logo" w />
+          <Image src={logo} alt="Logo" />
         </div>
       </div>
       <div className="menu">
@@ -111,6 +111,7 @@ const Wrap = styled.nav`
       align-items: center;
       justify-content: center;
       list-style: none;
+      padding-left: 0;
       li:first-child {
         margin: 0 1rem 0 0;
       }
@@ -128,6 +129,32 @@ const Wrap = styled.nav`
       height: 40px;
       background-color: var(--color-dark-blue);
       border-radius: 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin: 2.3rem 2.4rem;
+    border-radius: 10px;
+  }
+
+  @media (min-width: 1440px) {
+    position: fixed;
+    left: 3.6rem;
+    top: 40%;
+    transform: translateY(-40%);
+    flex-direction: column;
+    align-items: center;
+    height: 92%;
+    padding: 3.2rem 2.7rem;
+    .menu {
+      ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      li {
+        margin: 2rem 0 !important;
+      }
     }
   }
 `;

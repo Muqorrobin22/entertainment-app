@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "../styles/globals.css";
 import styled from "styled-components";
+import Navbar from "../components/navbar/navbar";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +14,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#FC4747" />
       </Head>
       <Wrap>
-        <Component {...pageProps} />
+        <Navbar />
+        <WrapComponent>
+          <Component {...pageProps} />
+        </WrapComponent>
       </Wrap>
     </>
   );
@@ -21,6 +25,17 @@ function MyApp({ Component, pageProps }) {
 
 const Wrap = styled.div`
   /* padding: 0 1.6rem; */
+`;
+
+const WrapComponent = styled.div`
+  padding: 0 1.6rem;
+  @media (min-width: 768px) {
+    margin: 0 2.4rem;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 7.5rem 3.6rem 0 20rem;
+  }
 `;
 
 export default MyApp;
