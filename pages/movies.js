@@ -1,5 +1,5 @@
 const Film = () => {
-  return <h1>film</h1>;
+  return <h1>coba</h1>;
 };
 
 export default Film;
