@@ -1,10 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import Navbar from "../components/navbar/navbar";
 import Search from "../public/assets/icon-search.svg";
+import data from "../public/data.json";
+import bookmark from "../public/assets/Bookmark.svg";
+import film from "../public/assets/movies.svg";
 
 export default function Home() {
+  console.log(data);
   return (
     <div>
       <Head>
@@ -19,6 +22,29 @@ export default function Home() {
           <input type="text" placeholder="Search for Movies or Tv Series" />
         </form>
       </InputWrap>
+      <Trending>
+        <h1>Trending</h1>
+        <div className="trending">
+          <div className="video">
+            <div className="bookmark">
+              <Image src={bookmark} alt="bookmark" />
+            </div>
+            <div className="info">
+              <div className="info-top">
+                <h1>2019</h1>
+                <div className="category">
+                  <Image src={film} alt="category" />
+                  <p>Movie</p>
+                </div>
+                <p>PG</p>
+              </div>
+              <div className="info-bottom">
+                <h1>Beyond Earth</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Trending>
     </div>
   );
 }
@@ -47,6 +73,79 @@ const InputWrap = styled.div`
       font-weight: 300;
       font-family: "Outfit";
       letter-spacing: 1px;
+    }
+  }
+`;
+
+const Trending = styled.div`
+  margin-top: 2.4rem;
+  h1 {
+    font-family: "Outfit";
+    font-size: "2rem";
+    font-weight: 300;
+  }
+  .trending {
+    margin-top: 1.6rem;
+    .video {
+      width: 24rem;
+      height: 14rem;
+      background: url("/small.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      position: relative;
+      .bookmark {
+        background-color: #5a698f;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 5%;
+        top: 5%;
+      }
+      .info {
+        font-family: "Outfit";
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        font-weight: 300;
+        .info-top {
+          display: flex;
+          align-items: center;
+          h1 {
+            font-size: 1.2rem;
+            font-weight: 300;
+          }
+          .category {
+            display: flex;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-left: 2rem;
+            align-items: center;
+            p {
+              margin-top: 0;
+              margin-bottom: 0;
+              margin-left: 0.6rem;
+            }
+          }
+          p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-left: 2rem;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+        .info-bottom {
+          h1 {
+            margin: 0;
+            font-weight: 500;
+          }
+        }
+      }
     }
   }
 `;
