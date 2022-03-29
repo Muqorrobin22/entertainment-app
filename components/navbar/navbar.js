@@ -15,6 +15,37 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const router = useRouter();
 
+  const linkNav = [
+    {
+      path: "/",
+      href: "/",
+      imgActive: homeActive,
+      img: home,
+      alt: "Home",
+    },
+    {
+      path: "/movies",
+      href: "/movies",
+      imgActive: filmActive,
+      img: film,
+      alt: "Movies",
+    },
+    {
+      path: "/tv",
+      href: "/tv",
+      imgActive: tvActive,
+      img: tv,
+      alt: "Tv",
+    },
+    {
+      path: "/bookmark",
+      href: "/bookmark",
+      imgActive: bookmarkActive,
+      img: bookmark,
+      alt: "Bookmark",
+    },
+  ];
+
   return (
     <Wrap>
       <div className="first">
@@ -24,66 +55,23 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <li>
-            {router.pathname === "/" ? (
-              <Link scroll={true} href="/" passHref>
-                <a>
-                  <Image src={homeActive} alt="Home" />
-                </a>
-              </Link>
-            ) : (
-              <Link scroll={true} href="/" passHref>
-                <a>
-                  <Image src={home} alt="Home" />
-                </a>
-              </Link>
-            )}
-          </li>
-          <li>
-            {router.pathname === "/movies" ? (
-              <Link scroll={true} href="/movies" passHref>
-                <a>
-                  <Image src={filmActive} alt="Home" />
-                </a>
-              </Link>
-            ) : (
-              <Link scroll={true} href="/movies" passHref>
-                <a>
-                  <Image src={film} alt="Home" />
-                </a>
-              </Link>
-            )}
-          </li>
-          <li>
-            {router.pathname === "/tv" ? (
-              <Link scroll={true} href="/tv" passHref>
-                <a>
-                  <Image src={tvActive} alt="Home" />
-                </a>
-              </Link>
-            ) : (
-              <Link scroll={true} href="/tv" passHref>
-                <a>
-                  <Image src={tv} alt="Home" />
-                </a>
-              </Link>
-            )}
-          </li>
-          <li>
-            {router.pathname === "/bookmark" ? (
-              <Link scroll={true} href="/bookmark" passHref>
-                <a>
-                  <Image src={bookmarkActive} alt="Home" />
-                </a>
-              </Link>
-            ) : (
-              <Link scroll={true} href="/bookmark" passHref>
-                <a>
-                  <Image src={bookmark} alt="Home" />
-                </a>
-              </Link>
-            )}
-          </li>
+          {linkNav.map((data) => (
+            <li key={data.alt}>
+              {router.pathname === data.path ? (
+                <Link scroll={true} href={data.href} passHref>
+                  <a>
+                    <Image src={data.imgActive} alt={data.alt} />
+                  </a>
+                </Link>
+              ) : (
+                <Link scroll={true} href={data.href} passHref>
+                  <a>
+                    <Image src={data.img} alt={data.alt} />
+                  </a>
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
       <div className="second">
