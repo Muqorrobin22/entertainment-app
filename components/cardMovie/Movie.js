@@ -1,11 +1,10 @@
 import Image from "next/image";
 import styled from "styled-components";
-import data from "../../public/data.json";
 import bookmark from "../../public/assets/Bookmark.svg";
 import film from "../../public/assets/movies.svg";
 import tv from "../../public/assets/tvs.svg";
 
-const Movie = () => {
+const Movie = ({ data, modifier }) => {
   const Mydata = [...data];
 
   return (
@@ -56,15 +55,14 @@ const Recommended = styled.div`
     font-weight: 300;
   }
   .trending {
-    margin-top: 1.6rem;
-    margin-left: 1.6rem;
+    margin-top: 2.4rem;
   }
 
   .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   .info {

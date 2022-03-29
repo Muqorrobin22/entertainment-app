@@ -58,7 +58,7 @@ export default function Home() {
           })}
         </ScrollContainer>
       </Trending>
-      <Movie />
+      <Movie data={data} />
     </div>
   );
 }
