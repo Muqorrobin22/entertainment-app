@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ videos, Movies, TVSeries }) {
-  console.log(TVSeries);
+  console.log(videos);
   return (
     <div>
       <Head>
@@ -100,12 +100,12 @@ const Trending = styled.div`
       display: flex;
       align-items: center;
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         font-weight: 300;
       }
       .category {
         display: flex;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         font-weight: 300;
         margin-left: 2rem;
         align-items: center;
@@ -116,7 +116,7 @@ const Trending = styled.div`
         }
       }
       p {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         font-weight: 300;
         margin-left: 2rem;
         margin-top: 0;
@@ -127,6 +127,13 @@ const Trending = styled.div`
       h1 {
         margin: 0;
         font-weight: 500;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+        line-height: 24px;
+        @media (min-width: 768px) {
+          font-size: 2.4rem;
+          line-height: 32px;
+        }
       }
     }
   }

@@ -22,10 +22,10 @@ const Movie = ({ data, title }) => {
                   <h1>{data.year}</h1>
                   <div className="category">
                     {title === "Movies" ? (
-                      <Image src={film} alt="category" />
+                      <Image src={film} width={20} height={20} alt="category" />
                     ) : null}
                     {title === "TV Series" ? (
-                      <Image src={tv} alt="category" />
+                      <Image src={tv} width={20} height={20} alt="category" />
                     ) : null}
 
                     <p>{title}</p>
@@ -70,12 +70,12 @@ const Recommended = styled.div`
       display: flex;
       align-items: center;
       h1 {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
         font-weight: 300;
       }
       .category {
         display: flex;
-        font-size: 1.1rem;
+        font-size: 1.6rem;
         font-weight: 300;
         margin-left: 2rem;
         align-items: center;
@@ -86,7 +86,7 @@ const Recommended = styled.div`
         }
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
         font-weight: 300;
         margin-left: 2rem;
         margin-top: 0;
