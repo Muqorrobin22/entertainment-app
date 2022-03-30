@@ -13,7 +13,7 @@ const Film = () => {
     <div>
       <InputCustom placeholder="Search for Movies" />
       <Recommended2>
-        <h1>Movies</h1>
+        <h2>Movies</h2>
         <div className="row">
           {Mydata.map((data) => {
             return (
@@ -54,10 +54,13 @@ const Film = () => {
 
 const Recommended2 = styled.div`
   margin-top: 2.4rem;
-  h1 {
+  h2 {
     font-family: "Outfit";
     font-size: "2rem";
     font-weight: 300;
+    @media (min-width: 1440px) {
+      font-size: 3.2rem;
+    }
   }
   .trending {
     margin-top: 2.4rem;
@@ -114,6 +117,16 @@ const Video2 = styled.div`
   width: 17rem;
   height: 11rem;
   background: url(${(props) => props.imgData.small});
+  @media (min-width: 768px) {
+    width: 22rem;
+    height: 19.2rem;
+  }
+  @media (min-width: 1440px) {
+    width: 28rem;
+    height: 22.6rem;
+    background: url(${(props) => props.imgData.large});
+    background-size: cover;
+  }
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 8px;

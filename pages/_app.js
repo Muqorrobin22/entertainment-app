@@ -2,6 +2,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import styled from "styled-components";
 import Navbar from "../components/navbar/navbar";
+import data from "../public/data.json";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <Wrap>
         <Navbar />
         <WrapComponent>
-          <Component {...pageProps} />
+          <Component {...pageProps} data={data} />
         </WrapComponent>
       </Wrap>
     </>

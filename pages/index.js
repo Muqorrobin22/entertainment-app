@@ -8,10 +8,19 @@ import tv from "../public/assets/tvs.svg";
 import ScrollContainer from "react-indiana-drag-scroll";
 import InputCustom from "../components/input/input";
 import Movie from "../components/cardMovie/Movie";
+import VideosData from "../lib/videos";
 
-export default function Home() {
-  // console.log(data);
-  const Mydata = [...data];
+export async function getServerSideProps() {
+  const videos = await VideosData("Trending ");
+  const Movies = await VideosData("Movie");
+  const TVSeries = await VideosData("Series");
+  return {
+    props: { videos, Movies, TVSeries },
+  };
+}
+
+export default function Home({ videos, Movies, TVSeries }) {
+  console.log(TVSeries);
   return (
     <div>
       <Head>
@@ -20,87 +29,72 @@ export default function Home() {
       </Head>
       <InputCustom placeholder="Search for Movies or Tv Series" />
       <Trending>
-        <h1>Trending</h1>
+        <h2>Trending</h2>
         <ScrollContainer
           className="scroll-container"
           vertical={false}
           horizontal={true}
         >
-          {Mydata.map((data) => {
+          {videos.map((data) => {
             return (
-              data.isTrending && (
-                <div className="trending" key={data.title}>
-                  <Video imgData={data.thumbnail.trending}>
-                    <div className="bookmark">
-                      <Image src={bookmark} alt="bookmark" />
+              <div className="trending" key={data.title}>
+                <Video imgData={data.img}>
+                  <div className="bookmark">
+                    <Image src={bookmark} alt="bookmark" />
+                  </div>
+                </Video>
+                <div className="info">
+                  <div className="info-top">
+                    <h1>{data.year}</h1>
+                    <div className="category">
+                      {/* {data.category === "Movie" ? (
+                        <Image src={film} alt="category" />
+                      ) : (
+                        <Image src={tv} alt="category" />
+                      )} */}
+
+                      <p>Trending</p>
                     </div>
-                    <div className="info">
-                      <div className="info-top">
-                        <h1>{data.year}</h1>
-                        <div className="category">
-                          {data.category === "Movie" ? (
-                            <Image src={film} alt="category" />
-                          ) : (
-                            <Image src={tv} alt="category" />
-                          )}
-                          <p>{data.category}</p>
-                        </div>
-                        <p>{data.rating}</p>
-                      </div>
-                      <div className="info-bottom">
-                        <h1>{data.title}</h1>
-                      </div>
-                    </div>
-                  </Video>
+                  </div>
+                  <div className="info-bottom">
+                    <h1>{data.title}</h1>
+                  </div>
                 </div>
-              )
+              </div>
             );
           })}
         </ScrollContainer>
       </Trending>
-      <Movie data={data} />
+      <Movie data={Movies} title="Movies" />
+      <Movie data={TVSeries} title="TV Series" />
     </div>
   );
 }
 
 const Trending = styled.div`
   margin-top: 2.4rem;
-  h1 {
+  h2 {
     font-family: "Outfit";
     font-size: "2rem";
     font-weight: 300;
+    @media (min-width: 1440px) {
+      font-size: 3.2rem;
+    }
   }
   .trending {
     margin-top: 1.6rem;
     margin-left: 1.6rem;
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
   }
-`;
+  .trending:first-child {
+    margin-left: 0;
+  }
 
-const Video = styled.div`
-  width: 24rem;
-  height: 14rem;
-  background: url(${(props) => props.imgData.small});
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-  position: relative;
-  .bookmark {
-    background-color: #5a698f;
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 5%;
-    top: 5%;
-  }
   .info {
     font-family: "Outfit";
-    position: absolute;
-    left: 5%;
-    bottom: 5%;
+
     font-weight: 300;
     .info-top {
       display: flex;
@@ -135,5 +129,41 @@ const Video = styled.div`
         font-weight: 500;
       }
     }
+  }
+`;
+
+const Video = styled.div`
+  width: 24rem;
+  height: 14rem;
+  background: url(${(props) => props.imgData});
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.6;
+  }
+  @media (min-width: 768px) {
+    width: 50rem;
+    height: 33rem;
+  }
+  @media (min-width: 1440px) {
+    background: url(${(props) => props.imgData});
+    background-size: cover;
+    background-position: center;
+  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  position: relative;
+  .bookmark {
+    background-color: #5a698f;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5%;
+    top: 5%;
   }
 `;

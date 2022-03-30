@@ -4,42 +4,36 @@ import bookmark from "../../public/assets/Bookmark.svg";
 import film from "../../public/assets/movies.svg";
 import tv from "../../public/assets/tvs.svg";
 
-const Movie = ({ data, modifier }) => {
-  const Mydata = [...data];
-
+const Movie = ({ data, title }) => {
   return (
     <Recommended>
-      <h1>Recommended for you</h1>
+      <h2>{title}</h2>
       <div className="row">
-        {Mydata.map((data) => {
+        {data.map((data) => {
           return (
-            data.isTrending === false && (
-              <div className="trending" key={data.title}>
-                <Video2 imgData={data.thumbnail.regular}>
-                  <div className="bookmark">
-                    <Image src={bookmark} alt="bookmark" />
-                  </div>
-                </Video2>
-                <div className="info">
-                  <div className="info-top">
-                    <h1>{data.year}</h1>
-                    <div className="category">
-                      {data.category === "Movie" ? (
-                        <Image src={film} alt="category" />
-                      ) : (
-                        <Image src={tv} alt="category" />
-                      )}
+            <div className="trending" key={data.title}>
+              <Video2 imgData={data.img}>
+                <div className="bookmark">
+                  <Image src={bookmark} alt="bookmark" />
+                </div>
+              </Video2>
+              <div className="info">
+                <div className="info-top">
+                  <h1>{data.year}</h1>
+                  <div className="category">
+                    {title === "Movies" ? (
+                      <Image src={film} alt="category" />
+                    ) : null}
+                    {title === "TV Series" ? (
+                      <Image src={tv} alt="category" />
+                    ) : null}
 
-                      <p>{data.category}</p>
-                    </div>
-                    <p>{data.rating}</p>
-                  </div>
-                  <div className="info-bottom">
-                    <h1>{data.title}</h1>
+                    <p>{title}</p>
                   </div>
                 </div>
+                <div className="info-bottom">{/* <h1>{data.title}</h1> */}</div>
               </div>
-            )
+            </div>
           );
         })}
       </div>
@@ -49,10 +43,13 @@ const Movie = ({ data, modifier }) => {
 
 const Recommended = styled.div`
   margin-top: 2.4rem;
-  h1 {
+  h2 {
     font-family: "Outfit";
     font-size: "2rem";
     font-weight: 300;
+    @media (min-width: 1440px) {
+      font-size: 3.2rem;
+    }
   }
   .trending {
     margin-top: 2.4rem;
@@ -96,19 +93,34 @@ const Recommended = styled.div`
         margin-bottom: 0;
       }
     }
-    .info-bottom {
+    /* .info-bottom {
       h1 {
         margin: 0;
         font-weight: 500;
+        width: 50%;
       }
-    }
+    } */
   }
 `;
 
 const Video2 = styled.div`
   width: 17rem;
   height: 11rem;
-  background: url(${(props) => props.imgData.small});
+  background: url(${(props) => props.imgData});
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.5;
+  }
+  @media (min-width: 768px) {
+    width: 22rem;
+    height: 19.2rem;
+  }
+  @media (min-width: 1440px) {
+    width: 28rem;
+    height: 22.6rem;
+    background: url(${(props) => props.imgData});
+    background-size: cover;
+  }
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 8px;
