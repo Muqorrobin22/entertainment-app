@@ -56,13 +56,14 @@ const Recommended = styled.div`
   }
   .trending {
     margin-top: 2.4rem;
+    margin-left: 1.2rem;
   }
 
   .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 
   .info {
@@ -111,6 +112,14 @@ const Video2 = styled.div`
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;
+  @media (min-width: 768px) {
+    width: 22rem;
+    height: 19.2rem;
+  }
+  @media (min-width: 1440px) {
+    width: 28rem;
+    height: 22.6rem;
+  }
   border-radius: 8px;
   position: relative;
   .bookmark {

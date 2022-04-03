@@ -61,6 +61,7 @@ const Recommended2 = styled.div`
   }
   .trending {
     margin-top: 2.4rem;
+    margin-left: 1.2rem;
   }
 
   .row {
@@ -118,6 +119,14 @@ const Video2 = styled.div`
   background-repeat: no-repeat;
   border-radius: 8px;
   position: relative;
+  @media (min-width: 768px) {
+    width: 22rem;
+    height: 19.2rem;
+  }
+  @media (min-width: 1440px) {
+    width: 28rem;
+    height: 22.6rem;
+  }
   .bookmark {
     background-color: #5a698f;
     width: 3.2rem;

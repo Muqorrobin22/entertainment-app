@@ -70,9 +70,15 @@ const Trending = styled.div`
     font-size: "2rem";
     font-weight: 300;
   }
+  .trending:first-child {
+    margin-left: 0 !important;
+  }
   .trending {
     margin-top: 1.6rem;
     margin-left: 1.6rem;
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
   }
 `;
 
@@ -82,6 +88,10 @@ const Video = styled.div`
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;
+  @media (min-width: 768px) {
+    width: 47rem;
+    height: 23rem;
+  }
   border-radius: 8px;
   position: relative;
   .bookmark {
