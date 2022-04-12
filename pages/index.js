@@ -9,6 +9,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import InputCustom from "../components/input/input";
 import Movie from "../components/cardMovie/Movie";
 import VideosData from "../lib/videos";
+import Link from "next/link";
 
 export async function getServerSideProps() {
   const videos = await VideosData("Trending ");
@@ -37,30 +38,32 @@ export default function Home({ videos, Movies, TVSeries }) {
         >
           {videos.map((data) => {
             return (
-              <div className="trending" key={data.title}>
-                <Video imgData={data.img}>
-                  <div className="bookmark">
-                    <Image src={bookmark} alt="bookmark" />
-                  </div>
-                </Video>
-                <div className="info">
-                  <div className="info-top">
-                    <h1>{data.year}</h1>
-                    <div className="category">
-                      {/* {data.category === "Movie" ? (
+              <Link href={`/video/${data.id}`} key={data.title}>
+                <div className="trending">
+                  <Video imgData={data.img}>
+                    <div className="bookmark">
+                      <Image src={bookmark} alt="bookmark" />
+                    </div>
+                  </Video>
+                  <div className="info">
+                    <div className="info-top">
+                      <h1>{data.year}</h1>
+                      <div className="category">
+                        {/* {data.category === "Movie" ? (
                         <Image src={film} alt="category" />
                       ) : (
                         <Image src={tv} alt="category" />
                       )} */}
 
-                      <p>Trending</p>
+                        <p>Trending</p>
+                      </div>
+                    </div>
+                    <div className="info-bottom">
+                      <h1>{data.title}</h1>
                     </div>
                   </div>
-                  <div className="info-bottom">
-                    <h1>{data.title}</h1>
-                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </ScrollContainer>
