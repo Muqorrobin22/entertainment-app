@@ -94,7 +94,8 @@
 
 .subText {
   /* font-size: 0.875rem 14px; */
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  line-height: 1.25rem /* 20px */;
   margin-left: 0px;
   overflow-wrap: break-word;
 }
