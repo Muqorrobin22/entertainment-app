@@ -8,7 +8,7 @@
   width: 80%;
   bottom: 40px;
   background-color: var(--color-semi-Semi-dark);
-  top: 10%;
+  top: 14%;
 
   outline: none;
   border-radius: 10px;
@@ -42,7 +42,7 @@
 
 /** Modal body **/
 .modalBody {
-  padding: 0 3rem;
+  padding: 2rem 3rem;
 }
 
 .modalBodyContent {
@@ -52,13 +52,19 @@
 }
 
 .col1 {
-  max-height: 50vh /* 208px */;
-  overflow-y: hidden;
-  overflow-y: scroll;
+  height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+  font-size: 1.6rem;
+}
+
+.col1::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .publishTime {
-  font-size: 1.125rem /* 18px */;
+  font-size: 1.8rem /* 18px */;
   line-height: 1.75rem /* 28px */;
   margin-top: 1.5rem /* 24px */;
   margin-bottom: 0.5rem /* 8px */;
@@ -74,18 +80,21 @@
 .description {
   margin-bottom: 0.5rem /* 8px */;
   margin-top: 0.75rem /* 12px */;
+  line-height: 2rem;
+  letter-spacing: 2px;
 }
 
 .col2 {
   color: var(--white10);
-  line-height: 1.75rem /* 28px */;
+  /* line-height: 1.75rem 28px; */
   display: flex;
   flex-direction: column;
+  font-size: 1.6rem;
 }
 
 .subText {
-  font-size: 0.875rem /* 14px */;
-  line-height: 1.25rem /* 20px */;
+  /* font-size: 0.875rem 14px; */
+  font-size: 1.6rem;
   margin-left: 0px;
   overflow-wrap: break-word;
 }
@@ -103,10 +112,18 @@
   margin: 0px;
 }
 
+@media (min-width: 768px) {
+  .modal {
+    top: 13%;
+    bottom: 52px;
+    width: 70%;
+  }
+}
+
 @media (min-width: 1440px) {
   .modal {
     top: 5%;
     bottom: 52px;
-    width: 72%;
+    width: 50%;
   }
 }
