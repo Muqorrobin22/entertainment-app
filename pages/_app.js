@@ -2,8 +2,23 @@ import Head from "next/head";
 import "../styles/globals.css";
 import styled from "styled-components";
 import Navbar from "../components/navbar/navbar";
+import data from "../public/data.json";
+import MoviesContext from "../store/movies-context";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  const Mydata = [...data];
+  const [isBookmark, setIsBookmark] = useState(Mydata);
+
+  // Function for change bookmark of each movie
+  function handleBookmark(title, index) {
+    console.log(title, index);
+
+    let newArray = [...isBookmark];
+    newArray[index].isBookmarked = !newArray[index].isBookmarked;
+    setIsBookmark(newArray);
+  }
+
   return (
     <>
       <Head>
@@ -13,12 +28,18 @@ function MyApp({ Component, pageProps }) {
 
         <meta name="theme-color" content="#FC4747" />
       </Head>
-      <Wrap>
+      <MoviesContext.Provider
+        value={{
+          Mydata: Mydata,
+          isBookmarked: isBookmark,
+          handleBookmark,
+        }}
+      >
         <Navbar />
         <WrapComponent>
           <Component {...pageProps} />
         </WrapComponent>
-      </Wrap>
+      </MoviesContext.Provider>
     </>
   );
 }

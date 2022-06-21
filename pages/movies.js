@@ -4,10 +4,11 @@ import styled from "styled-components";
 import bookmark from "../public/assets/Bookmark.svg";
 import film from "../public/assets/movies.svg";
 import tv from "../public/assets/tvs.svg";
-import data from "../public/data.json";
+import { useContext } from "react";
+import MoviesContext from "../store/movies-context";
 
 const Film = () => {
-  const Mydata = [...data];
+  const context = useContext(MoviesContext);
 
   return (
     <div>
@@ -15,7 +16,7 @@ const Film = () => {
       <Recommended2>
         <h1>Movies</h1>
         <div className="row">
-          {Mydata.map((data) => {
+          {context.Mydata.map((data) => {
             return (
               data.category === "Movie" && (
                 <div className="trending" key={data.title}>

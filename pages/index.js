@@ -1,17 +1,26 @@
 import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
-import data from "../public/data.json";
 import bookmark from "../public/assets/Bookmark.svg";
+import bookmarkFull from "../public/assets/icon-bookmark-full.svg";
 import film from "../public/assets/movies.svg";
 import tv from "../public/assets/tvs.svg";
 import ScrollContainer from "react-indiana-drag-scroll";
 import InputCustom from "../components/input/input";
 import Movie from "../components/cardMovie/Movie";
+import { useContext, useState } from "react";
+import MoviesContext from "../store/movies-context";
 
 export default function Home() {
   // console.log(data);
-  const Mydata = [...data];
+
+  // function bookmarkHandler(title) {
+  //   console.log(title);
+  //   setIsBookmark((prev) => !prev);
+  // }
+
+  const context = useContext(MoviesContext);
+
   return (
     <div>
       <Head>
@@ -26,13 +35,29 @@ export default function Home() {
           vertical={false}
           horizontal={true}
         >
-          {Mydata.map((data) => {
+          {context.Mydata.map((data, i) => {
             return (
               data.isTrending && (
                 <div className="trending" key={data.title}>
                   <Video imgData={data.thumbnail.trending}>
                     <div className="bookmark">
-                      <Image src={bookmark} alt="bookmark" />
+                      {!data.isBookmarked && data.title && (
+                        <Image
+                          src={bookmark}
+                          alt="bookmark"
+                          onClick={() => context.handleBookmark(data.title, i)}
+                          key={data.title}
+                        />
+                      )}
+
+                      {data.isBookmarked && data.title && (
+                        <Image
+                          src={bookmarkFull}
+                          alt="bookmark"
+                          onClick={() => context.handleBookmark(data.title, i)}
+                          key={data.title}
+                        />
+                      )}
                     </div>
                     <div className="info">
                       <div className="info-top">
@@ -58,7 +83,7 @@ export default function Home() {
           })}
         </ScrollContainer>
       </Trending>
-      <Movie data={data} />
+      <Movie />
     </div>
   );
 }

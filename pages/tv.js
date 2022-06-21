@@ -5,17 +5,18 @@ import bookmark from "../public/assets/Bookmark.svg";
 import film from "../public/assets/movies.svg";
 import tv from "../public/assets/tvs.svg";
 import data from "../public/data.json";
+import { useContext } from "react";
+import MoviesContext from "../store/movies-context";
 
 const Tv = () => {
-  const Mydata = [...data];
-
+  const context = useContext(MoviesContext);
   return (
     <div>
       <InputCustom placeholder="Search for Movies" />
       <Recommended2>
         <h1>TV Series</h1>
         <div className="row">
-          {Mydata.map((data) => {
+          {context.Mydata.map((data) => {
             return (
               data.category === "TV Series" && (
                 <div className="trending" key={data.title}>

@@ -1,17 +1,19 @@
 import Image from "next/image";
+import { useContext } from "react";
 import styled from "styled-components";
 import bookmark from "../../public/assets/Bookmark.svg";
 import film from "../../public/assets/movies.svg";
 import tv from "../../public/assets/tvs.svg";
+import MoviesContext from "../../store/movies-context";
 
-const Movie = ({ data, modifier }) => {
-  const Mydata = [...data];
+const Movie = () => {
+  const context = useContext(MoviesContext);
 
   return (
     <Recommended>
       <h1>Recommended for you</h1>
       <div className="row">
-        {Mydata.map((data) => {
+        {context.Mydata.map((data) => {
           return (
             data.isTrending === false && (
               <div className="trending" key={data.title}>
