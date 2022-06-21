@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import styled from "styled-components";
 import bookmark from "../../public/assets/Bookmark.svg";
+import bookmarkFull from "../../public/assets/icon-bookmark-full.svg";
 import film from "../../public/assets/movies.svg";
 import tv from "../../public/assets/tvs.svg";
 import MoviesContext from "../../store/movies-context";
@@ -13,13 +14,29 @@ const Movie = () => {
     <Recommended>
       <h1>Recommended for you</h1>
       <div className="row">
-        {context.Mydata.map((data) => {
+        {context.Mydata.map((data, i) => {
           return (
             data.isTrending === false && (
               <div className="trending" key={data.title}>
                 <Video2 imgData={data.thumbnail.regular}>
                   <div className="bookmark">
-                    <Image src={bookmark} alt="bookmark" />
+                    {!data.isBookmarked && data.title && (
+                      <Image
+                        src={bookmark}
+                        alt="bookmark"
+                        onClick={() => context.handleBookmark(data.title, i)}
+                        key={data.title}
+                      />
+                    )}
+
+                    {data.isBookmarked && data.title && (
+                      <Image
+                        src={bookmarkFull}
+                        alt="bookmark"
+                        onClick={() => context.handleBookmark(data.title, i)}
+                        key={data.title}
+                      />
+                    )}
                   </div>
                 </Video2>
                 <div className="info">
