@@ -75,14 +75,20 @@ const Recommended = styled.div`
   }
   .trending {
     margin-top: 2.4rem;
-    margin-left: 1.2rem;
+    margin-left: 1.8rem;
+    @media (min-width: 776px) {
+      margin-left: 1.2rem;
+    }
   }
 
   .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    @media (min-width: 776px) {
+      justify-content: space-between;
+    }
   }
 
   .info {
@@ -126,8 +132,8 @@ const Recommended = styled.div`
 `;
 
 const Video2 = styled.div`
-  width: 17rem;
-  height: 11rem;
+  width: 19rem;
+  height: 13rem;
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;

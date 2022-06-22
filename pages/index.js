@@ -108,8 +108,8 @@ const Trending = styled.div`
 `;
 
 const Video = styled.div`
-  width: 24rem;
-  height: 14rem;
+  width: 27rem;
+  height: 17rem;
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;
