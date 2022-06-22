@@ -2,6 +2,7 @@ import InputCustom from "../components/input/input";
 import Image from "next/image";
 import styled from "styled-components";
 import bookmark from "../public/assets/Bookmark.svg";
+import bookmarkFull from "../public/assets/icon-bookmark-full.svg";
 import film from "../public/assets/movies.svg";
 import tv from "../public/assets/tvs.svg";
 import { useContext } from "react";
@@ -17,13 +18,33 @@ const Film = () => {
         <h1>Movies</h1>
         <div className="row">
           {context.filterData.length !== 0 &&
-            context.filterData.map((data) => {
+            context.filterData.map((data, i) => {
               return (
                 data.category === "Movie" && (
                   <div className="trending" key={data.title}>
                     <Video2 imgData={data.thumbnail.regular}>
                       <div className="bookmark">
-                        <Image src={bookmark} alt="bookmark" />
+                        {!data.isBookmarked && data.title && (
+                          <Image
+                            src={bookmark}
+                            alt="bookmark"
+                            onClick={() =>
+                              context.handleBookmark(data.title, i)
+                            }
+                            key={data.title}
+                          />
+                        )}
+
+                        {data.isBookmarked && data.title && (
+                          <Image
+                            src={bookmarkFull}
+                            alt="bookmark"
+                            onClick={() =>
+                              context.handleBookmark(data.title, i)
+                            }
+                            key={data.title}
+                          />
+                        )}
                       </div>
                     </Video2>
                     <div className="info">
