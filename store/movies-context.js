@@ -6,6 +6,7 @@ const MoviesContext = React.createContext({
   Mydata: [],
   isBookmarked: false,
   handleBookmark: () => {},
+  handleChangeInput: () => {},
 });
 
 export default MoviesContext;

@@ -9,14 +9,28 @@ import { useState } from "react";
 function MyApp({ Component, pageProps }) {
   const Mydata = [...data];
   const [isBookmark, setIsBookmark] = useState(Mydata);
+  const [filterData, setFilterData] = useState(Mydata);
 
   // Function for change bookmark of each movie
   function handleBookmark(title, index) {
-    console.log(title, index);
+    // console.log(title, index);
 
     let newArray = [...isBookmark];
     newArray[index].isBookmarked = !newArray[index].isBookmarked;
     setIsBookmark(newArray);
+  }
+
+  function handleChangeInput(event) {
+    let inputValue = event.target.value;
+    const newFilter = Mydata.filter((value) => {
+      return value.title.toLowerCase().includes(inputValue.toLowerCase());
+    });
+
+    if (inputValue === "") {
+      setFilterData(Mydata);
+    } else {
+      setFilterData(newFilter);
+    }
   }
 
   return (
@@ -32,7 +46,9 @@ function MyApp({ Component, pageProps }) {
         value={{
           Mydata: Mydata,
           isBookmarked: isBookmark,
+          filterData,
           handleBookmark,
+          handleChangeInput,
         }}
       >
         <Navbar />

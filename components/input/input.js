@@ -1,15 +1,23 @@
 import styled from "styled-components";
 import Search from "../../public/assets/icon-search.svg";
 import Image from "next/image";
+import { useContext } from "react";
+import MoviesContext from "../../store/movies-context";
 
 const InputCustom = ({ placeholder }) => {
+  const context = useContext(MoviesContext);
+
   return (
     <InputWrap>
       <button>
         <Image src={Search} alt="search" />
       </button>
       <form>
-        <input type="text" placeholder={placeholder} />
+        <input
+          type="text"
+          placeholder={placeholder}
+          onChange={context.handleChangeInput}
+        />
       </form>
     </InputWrap>
   );

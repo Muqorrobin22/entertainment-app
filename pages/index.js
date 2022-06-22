@@ -35,52 +35,57 @@ export default function Home() {
           vertical={false}
           horizontal={true}
         >
-          {context.Mydata.map((data, i) => {
-            return (
-              data.isTrending && (
-                <div className="trending" key={data.title}>
-                  <Video imgData={data.thumbnail.trending}>
-                    <div className="bookmark">
-                      {!data.isBookmarked && data.title && (
-                        <Image
-                          src={bookmark}
-                          alt="bookmark"
-                          onClick={() => context.handleBookmark(data.title, i)}
-                          key={data.title}
-                        />
-                      )}
+          {context.filterData.length !== 0 &&
+            context.filterData.map((data, i) => {
+              return (
+                data.isTrending && (
+                  <div className="trending" key={data.title}>
+                    <Video imgData={data.thumbnail.trending}>
+                      <div className="bookmark">
+                        {!data.isBookmarked && data.title && (
+                          <Image
+                            src={bookmark}
+                            alt="bookmark"
+                            onClick={() =>
+                              context.handleBookmark(data.title, i)
+                            }
+                            key={data.title}
+                          />
+                        )}
 
-                      {data.isBookmarked && data.title && (
-                        <Image
-                          src={bookmarkFull}
-                          alt="bookmark"
-                          onClick={() => context.handleBookmark(data.title, i)}
-                          key={data.title}
-                        />
-                      )}
-                    </div>
-                    <div className="info">
-                      <div className="info-top">
-                        <h1>{data.year}</h1>
-                        <div className="category">
-                          {data.category === "Movie" ? (
-                            <Image src={film} alt="category" />
-                          ) : (
-                            <Image src={tv} alt="category" />
-                          )}
-                          <p>{data.category}</p>
+                        {data.isBookmarked && data.title && (
+                          <Image
+                            src={bookmarkFull}
+                            alt="bookmark"
+                            onClick={() =>
+                              context.handleBookmark(data.title, i)
+                            }
+                            key={data.title}
+                          />
+                        )}
+                      </div>
+                      <div className="info">
+                        <div className="info-top">
+                          <h1>{data.year}</h1>
+                          <div className="category">
+                            {data.category === "Movie" ? (
+                              <Image src={film} alt="category" />
+                            ) : (
+                              <Image src={tv} alt="category" />
+                            )}
+                            <p>{data.category}</p>
+                          </div>
+                          <p>{data.rating}</p>
                         </div>
-                        <p>{data.rating}</p>
+                        <div className="info-bottom">
+                          <h1>{data.title}</h1>
+                        </div>
                       </div>
-                      <div className="info-bottom">
-                        <h1>{data.title}</h1>
-                      </div>
-                    </div>
-                  </Video>
-                </div>
-              )
-            );
-          })}
+                    </Video>
+                  </div>
+                )
+              );
+            })}
         </ScrollContainer>
       </Trending>
       <Movie />
