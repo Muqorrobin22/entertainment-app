@@ -14,53 +14,54 @@ const Movie = () => {
     <Recommended>
       <h1>Recommended for you</h1>
       <div className="row">
-        {context.Mydata.map((data, i) => {
-          return (
-            data.isTrending === false && (
-              <div className="trending" key={data.title}>
-                <Video2 imgData={data.thumbnail.regular}>
-                  <div className="bookmark">
-                    {!data.isBookmarked && data.title && (
-                      <Image
-                        src={bookmark}
-                        alt="bookmark"
-                        onClick={() => context.handleBookmark(data.title, i)}
-                        key={data.title}
-                      />
-                    )}
-
-                    {data.isBookmarked && data.title && (
-                      <Image
-                        src={bookmarkFull}
-                        alt="bookmark"
-                        onClick={() => context.handleBookmark(data.title, i)}
-                        key={data.title}
-                      />
-                    )}
-                  </div>
-                </Video2>
-                <div className="info">
-                  <div className="info-top">
-                    <h1>{data.year}</h1>
-                    <div className="category">
-                      {data.category === "Movie" ? (
-                        <Image src={film} alt="category" />
-                      ) : (
-                        <Image src={tv} alt="category" />
+        {context.filterData.length !== 0 &&
+          context.filterData.map((data, i) => {
+            return (
+              data.isTrending === false && (
+                <div className="trending" key={data.title}>
+                  <Video2 imgData={data.thumbnail.regular}>
+                    <div className="bookmark">
+                      {!data.isBookmarked && data.title && (
+                        <Image
+                          src={bookmark}
+                          alt="bookmark"
+                          onClick={() => context.handleBookmark(data.title, i)}
+                          key={data.title}
+                        />
                       )}
 
-                      <p>{data.category}</p>
+                      {data.isBookmarked && data.title && (
+                        <Image
+                          src={bookmarkFull}
+                          alt="bookmark"
+                          onClick={() => context.handleBookmark(data.title, i)}
+                          key={data.title}
+                        />
+                      )}
                     </div>
-                    <p>{data.rating}</p>
-                  </div>
-                  <div className="info-bottom">
-                    <h1>{data.title}</h1>
+                  </Video2>
+                  <div className="info">
+                    <div className="info-top">
+                      <h1>{data.year}</h1>
+                      <div className="category">
+                        {data.category === "Movie" ? (
+                          <Image src={film} alt="category" />
+                        ) : (
+                          <Image src={tv} alt="category" />
+                        )}
+
+                        <p>{data.category}</p>
+                      </div>
+                      <p>{data.rating}</p>
+                    </div>
+                    <div className="info-bottom">
+                      <h1>{data.title}</h1>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          );
-        })}
+              )
+            );
+          })}
       </div>
     </Recommended>
   );
