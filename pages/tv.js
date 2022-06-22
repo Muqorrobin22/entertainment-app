@@ -96,7 +96,7 @@ const Recommended2 = styled.div`
       display: flex;
       align-items: center;
       h1 {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         font-weight: 300;
       }
       .category {
@@ -112,7 +112,7 @@ const Recommended2 = styled.div`
         }
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         font-weight: 300;
         margin-left: 2rem;
         margin-top: 0;
@@ -129,8 +129,8 @@ const Recommended2 = styled.div`
 `;
 
 const Video2 = styled.div`
-  width: 17rem;
-  height: 11rem;
+  width: 20rem;
+  height: 13rem;
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;
@@ -155,6 +155,7 @@ const Video2 = styled.div`
     position: absolute;
     right: 5%;
     top: 5%;
+    cursor: pointer;
   }
 `;
 

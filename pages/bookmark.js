@@ -126,8 +126,8 @@ const Recommended2 = styled.div`
 `;
 
 const Video2 = styled.div`
-  width: 17rem;
-  height: 11rem;
+  width: 20rem;
+  height: 13rem;
   background: url(${(props) => props.imgData.small});
   background-size: cover;
   background-repeat: no-repeat;
@@ -152,6 +152,7 @@ const Video2 = styled.div`
     position: absolute;
     right: 5%;
     top: 5%;
+    cursor: pointer;
   }
 `;
 

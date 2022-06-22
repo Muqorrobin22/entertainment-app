@@ -130,6 +130,7 @@ const Video = styled.div`
     position: absolute;
     right: 5%;
     top: 5%;
+    cursor: pointer;
   }
   .info {
     font-family: "Outfit";
@@ -141,12 +142,12 @@ const Video = styled.div`
       display: flex;
       align-items: center;
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 300;
       }
       .category {
         display: flex;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 300;
         margin-left: 2rem;
         align-items: center;
@@ -157,7 +158,7 @@ const Video = styled.div`
         }
       }
       p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 300;
         margin-left: 2rem;
         margin-top: 0;
