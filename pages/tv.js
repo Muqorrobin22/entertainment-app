@@ -91,6 +91,7 @@ const Recommended2 = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 6rem;
   }
 
   .info {

@@ -87,6 +87,7 @@ const Recommended = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin-bottom: 6rem;
     @media (min-width: 776px) {
       justify-content: space-between;
     }
