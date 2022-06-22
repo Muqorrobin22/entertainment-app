@@ -16,37 +16,38 @@ const Film = () => {
       <Recommended2>
         <h1>Movies</h1>
         <div className="row">
-          {context.Mydata.map((data) => {
-            return (
-              data.category === "Movie" && (
-                <div className="trending" key={data.title}>
-                  <Video2 imgData={data.thumbnail.regular}>
-                    <div className="bookmark">
-                      <Image src={bookmark} alt="bookmark" />
-                    </div>
-                  </Video2>
-                  <div className="info">
-                    <div className="info-top">
-                      <h1>{data.year}</h1>
-                      <div className="category">
-                        {data.category === "Movie" ? (
-                          <Image src={film} alt="category" />
-                        ) : (
-                          <Image src={tv} alt="category" />
-                        )}
-
-                        <p>{data.category}</p>
+          {context.filterData.length !== 0 &&
+            context.filterData.map((data) => {
+              return (
+                data.category === "Movie" && (
+                  <div className="trending" key={data.title}>
+                    <Video2 imgData={data.thumbnail.regular}>
+                      <div className="bookmark">
+                        <Image src={bookmark} alt="bookmark" />
                       </div>
-                      <p>{data.rating}</p>
-                    </div>
-                    <div className="info-bottom">
-                      <h1>{data.title}</h1>
+                    </Video2>
+                    <div className="info">
+                      <div className="info-top">
+                        <h1>{data.year}</h1>
+                        <div className="category">
+                          {data.category === "Movie" ? (
+                            <Image src={film} alt="category" />
+                          ) : (
+                            <Image src={tv} alt="category" />
+                          )}
+
+                          <p>{data.category}</p>
+                        </div>
+                        <p>{data.rating}</p>
+                      </div>
+                      <div className="info-bottom">
+                        <h1>{data.title}</h1>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            );
-          })}
+                )
+              );
+            })}
         </div>
       </Recommended2>
     </div>

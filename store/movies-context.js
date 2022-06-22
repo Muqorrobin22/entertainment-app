@@ -5,6 +5,7 @@ import React from "react";
 const MoviesContext = React.createContext({
   Mydata: [],
   isBookmarked: false,
+  filterData: [],
   handleBookmark: () => {},
   handleChangeInput: () => {},
 });
